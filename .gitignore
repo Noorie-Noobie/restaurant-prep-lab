@@ -1,0 +1,43 @@
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+credentials*.json
+secrets*.json
+# Environments/build outputs
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+# Data: reproducible download + derived DB stay on each laptop
+data/raw/*
+!data/raw/LICENSE-gt.txt
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-wal
+*.sqlite-shm
+# Uploaded invoices, review records, and private exports never sync
+data/evidence/*
+!data/evidence/.gitkeep
+data/private/
+*.log
