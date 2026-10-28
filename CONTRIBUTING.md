@@ -67,11 +67,18 @@ If Git reports a conflict, stop and resolve the affected lines together; don't f
 
 Never put a real restaurant's export or customer data into this repository without permission and a specific data-handling decision. Synthetic current data remains clearly labeled. It can later be replaced behind the ingestion interface with permitted transaction data; availability and licensing have not yet been established for a real replacement.
 
+## Keep the shared checklist current
+
+Use only **Working now**, **Haven't started**, **Almost done**, or **Completed** in [TASKS.md](TASKS.md). Claim your proposed task when you actually start; keep at most one or two active items overall. Almost done requires implemented work plus a named remaining verification. Check Completed only with test/demo evidence. Don't claim your teammate's progress.
+
+For every authorized project upload, this assistant must update statuses from evidence and refresh [README → Next to tackle](README.md#next-to-tackle), including owner, dependency and done check. Teammates should do the same when starting or finishing. Edit Markdown with GitHub's pencil button and propose a branch/PR, or include the docs update in your normal code PR. Keep stable task IDs; no paid Project board/API setup is needed. This standing upkeep rule applies to this project only and does not authorize new feature work, unrelated uploads, merges, public release or deployment.
+
 ## Before a push
 
 1. Run tests; inspect `git diff --cached` and `git status --short`.
 2. Confirm there are no keys, `.env`, invoices, private exports, databases or `.venv` in the staged files.
 3. Preserve provenance and labels. Don't claim a manual fixture is recorded Meta output.
-4. Add dependencies deliberately, keep `pyproject.toml` and tested `requirements.lock.txt` consistent.
+4. Update your task status with evidence and refresh README's Next to tackle.
+5. Add dependencies deliberately, keep `pyproject.toml` and tested `requirements.lock.txt` consistent.
 
 A `.gitignore` prevents accidental new additions; it does not remove something already committed. If a secret is ever committed, stop sharing and arrange rotation—deleting the visible line is insufficient.

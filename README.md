@@ -1,5 +1,22 @@
 # Restaurant Prep Lab 🍕
 
+## Next to tackle
+
+**[Open the shared checklist → TASKS.md](TASKS.md)** — statuses: **Working now**, **Haven't started**, **Almost done**, **Completed**. No code feature is currently marked Working now.
+
+| Who / task | Do next | Depends on | Done check |
+|---|---|---|---|
+| **You · S1** | Launch below, filter Explore to one month, compare orders/pizzas/sales | Starter already prepared | Record one bestseller and busiest weekday/hour with the date range |
+| **Teammate · S2** | Give the owner your GitHub username; after invitation, accept and follow [setup steps](CONTRIBUTING.md) | Exact handle + authorized invitation | Your own laptop runs the app and tests |
+| **Both · S3/D3** | Agree recipe amounts/units, confirmed stock and prep-time fields using one labeled example | S1/S2 | Both modules accept the same valid example |
+| **You · A3; Teammate · U2** | Build the same-weekday baseline and editable input form, then connect the deterministic planner | S3/D3; A3 also needs date coverage D2 | P3 demonstrates one base case and one stock shortage |
+
+Meta access/credit checks (**Teammate · M1**) can proceed in parallel after setup; keep keys private. The adapter is a scaffold, not verified live extraction. Proposed internal feature freeze: **November 2**; hackathon deadline: **November 4, 6 PM Pacific**.
+
+**Keep this current:** every authorized project upload by this assistant must update task statuses from evidence and refresh this summary's owner, dependency and done check. Teammates likewise update their own tasks when starting/finishing via GitHub Markdown editing or their normal PR. This is project upkeep, not authorization for unrelated uploads, feature work, merges or deployment.
+
+## Run the starter
+
 **Start here:** open Terminal and paste this one command. The local environment and database are already prepared on this computer.
 
 ```sh
@@ -20,7 +37,7 @@ Open **http://127.0.0.1:8501**. Stop with **Ctrl+C**. This starts a local proces
 | Forecast and feasible prep | deterministic Python, to implement | `src/restaurant_lab/planning.py` |
 | Invoice image extraction | Meta Muse Spark 1.3, adapter prepared | `src/restaurant_lab/meta.py` |
 | Checks | pytest + Streamlit AppTest | `tests/test_starter.py` |
-| Daily work split | Task matrix | `TASKS.md` |
+| Shared work checklist | GitHub Markdown | [TASKS.md](TASKS.md) |
 
 ## Already works / remaining
 
@@ -40,7 +57,7 @@ This supports a visible “document → checked evidence → feasible action” 
 
 ## Team workflow
 
-Arshnoor owns `data.py`, `analytics.py`, `planning.py` and their tests. Teammate owns `app.py`, `meta.py`, review UI and its tests. Agree function input/output shapes before editing shared files. See `TASKS.md` for date, owner, dependencies and completion criteria. GitHub synchronizes code and the verified download manifest; each laptop runs its own app/database. The private repository is [Noorie-Noobie/restaurant-prep-lab](https://github.com/Noorie-Noobie/restaurant-prep-lab). Teammates need an invitation before cloning.
+Arshnoor owns `data.py`, `analytics.py`, `planning.py` and their tests. Teammate owns `app.py`, `meta.py`, review UI and its tests. Agree function input/output shapes before editing shared files. See [TASKS.md](TASKS.md) for status, proposed owner, next action, dependencies and completion checks. GitHub synchronizes code and the verified download manifest; each laptop runs its own app/database. The private repository is [Noorie-Noobie/restaurant-prep-lab](https://github.com/Noorie-Noobie/restaurant-prep-lab). Teammates need an invitation before cloning.
 
 ## Useful commands (from this folder)
 

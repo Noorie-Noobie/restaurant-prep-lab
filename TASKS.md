@@ -1,68 +1,80 @@
-# Build board · October 28–November 4
+# Shared checklist · Restaurant Prep Lab
 
-A = Arshnoor. T = teammate. Both have technical ownership. Dates are targets; finish dependencies first. Build freeze November 3. Submit manually by **November 4, 4 PM Pacific**; deadline **6 PM Pacific** (November 5, 02:00 UTC).
+**Owners are proposed:** **You** = Arshnoor, analytics/planning; **Teammate** = app/Meta; **Both** = integration/review. Agree ownership before starting. This file is the single task board; [README → Next to tackle](README.md#next-to-tackle) is its short action summary.
 
-## Setup + data
+## Next to tackle
 
-| ID / day | Owner | Action / exact location | Depends on | Done criterion | Status |
-|---|---|---|---|---|---|
-| S1 · Oct 28 | A | Run `sh run.sh`, open localhost:8501 | — | Explain order vs pizza totals on Explore | Starter ready; walkthrough pending |
-| S2 · Oct 28 | T | Copy project without `.venv`; README teammate setup | — | Same app runs on teammate computer | Pending |
-| S3 · Oct 28 | Both | Agree function inputs/outputs in README | S1 | Explain demand + recipes + stock → plan | Pending |
-| D1 · Oct 28 | A | Inspect `data.py`, `data/PROVENANCE.md`, SQLite | — | 49,574 lines, 21,350 orders, $817,860.05; keep repeated items | Implemented; owner review pending |
-| D2 · Oct 29 | A | Add coverage report in `data.py` | D1 | Seven missing dates marked unknown, not zero sales | Pending |
-| D3 · Oct 29 | A | Create `data/assumptions/recipes.csv`, `inventory.csv`, `capacity.csv` | D1 | Seven names, size-specific recipe weights/units; invented inputs labeled demo assumptions | Pending |
+1. **You · S1:** run the existing app, change Explore's date range, and explain why order count differs from pizza count. No API key needed. Done: record one bestseller and one busiest weekday/hour with the selected date range.
+2. **Teammate · S2:** send your exact GitHub username to the owner; after an authorized invitation, accept it and follow [CONTRIBUTING.md](CONTRIBUTING.md). Done: app and tests run independently on your laptop. **Blocked until invitation/access.**
+3. **Both · S3 → D3:** agree the recipe/stock/prep schema before either person builds against it. You define the units and validation rules; teammate defines the editable form and confirmation fields. Done: one small, explicitly labeled example passes both sides' checks.
+4. **You · A3 / Teammate · U2:** after S3/D3, build a same-weekday demand baseline and the input form separately; connect them through P1/P2's deterministic planner. **Teammate can check Meta account/credits in parallel (M1), without sharing keys in chat.**
 
-## Analytics + planning
+## How statuses work
 
-| ID / day | Owner | Action / exact location | Depends on | Done criterion | Status |
-|---|---|---|---|---|---|
-| A1 · Oct 29 | A | Review `analytics.py`, compare with SQLite query | D1 | Units/revenue and distinct-order heatmap agree | Implemented; owner review pending |
-| A2 · Oct 29 | A | Add per-observed-weekday hourly averages in `analytics.py` | D2 | Correct denominators and date coverage labels | Pending |
-| A3 · Oct 30 | A | Implement trailing-four-observed-same-weekdays baseline in `planning.py` | D2 | Per-SKU next-day demand, cutoff and observation count; unknown closures handled | Pending |
-| A4 · Oct 30 | A | Hold out last four weeks, compare baseline with trailing mean | A3 | MAE on known observed dates, no future-data leakage; menu-selection limitations documented | Pending |
-| P1 · Oct 31 | A | Compute ingredient amounts from recipes in `planning.py` | D3,A3 | Correct size-specific demand multiplication; missing recipes fail clearly | Pending |
-| P2 · Nov 1 | A | Implement deterministic feasible prep in `planning.py` | P1 | No stock or prep-time overrun; unmet demand shown; allocation policy explained | Pending |
-| P3 · Nov 1 | Both | Compare low/base/high demand scenarios | P2 | Reproducible numbers, leftover/shortfall tradeoffs | Pending |
-
-## Meta + user interface
-
-| ID / day | Owner | Action / exact location | Depends on | Done criterion | Status |
-|---|---|---|---|---|---|
-| M1 · Oct 29 | T | Review `meta.py`; privately check Meta credit/model access | S2 | Model/endpoint/allowance known, no committed secrets | Adapter ready; live untested |
-| M2 · Oct 30 | T | Create labeled demo invoice image; run extraction after account approval | M1 | Actual response with quantity/unit/cost/source quote; model/request ID saved | Pending |
-| M3 · Oct 31 | T | Add correction + confirmation UI in `app.py`, audit in `data/evidence/` | M2 | Unconfirmed/null/invalid fields blocked; edit history retained; changing image clears old candidate | Pending |
-| M4 · Nov 1 | T | Reconcile confirmed purchases to current stock in SQLite | M3,D3 | Purchase is not assumed on-hand stock; units normalized; unknown IDs rejected | Pending |
-| M5 · Nov 2 | T | Explain actual `plan_prep` results through Meta | M4,P2 | Numeric function results and evidence references displayed; prose cannot override constraints | Pending |
-| U1 · Oct 30 | T | Polish Explore filters/errors/empty states in `app.py` | A1 | Synthetic label, units and date boundaries clear | Starter ready; polish pending |
-| U2 · Nov 1 | T | Connect Prep Planner form to Python function | P2 | Scenario controls show genuine stock/time constraints | Pending |
-| U3 · Nov 2 | T | Show side-by-side Meta evidence trace | M5 | Source → extracted row → edit → stock → computation → explanation | Pending |
-
-PNG/JPEG extraction is scaffolded. PDF page conversion and recipe extraction are optional later work. Avoid paid requests on Streamlit reruns. User confirms external upload and account usage before live testing.
-
-## Testing + demo
-
-| ID / day | Owner | Action / exact location | Depends on | Done criterion | Status |
-|---|---|---|---|---|---|
-| Q1 · Oct 28 | A | `PYTHONPATH=src .venv/bin/python -m pytest -q` | D1 | Ingestion, repeated-item/rush counts, UI smoke pass | Starter checks provided |
-| Q2 · Nov 2 | A | Add planning/leakage tests in `tests/` | P2,A4 | Impossible stock/time rejected; no future training rows | Pending |
-| Q3 · Nov 2 | T | Add timeout/refusal/bad-JSON and confirmation tests | M3 | Recoverable UI; no accidental save or repeated spend | Pending |
-| Q4 · Nov 3 | Both | Full suite and clean-start walkthrough | Q2,Q3,U3 | Pages work, synthetic/live state honest, no secrets packaged | Pending |
-| V1 · Nov 3 | Both | Rehearse three-minute demo | Q4 | A explains analytics/constraints; T shows Meta evidence flow | Pending |
-| V2 · Nov 3 | Both | README, recording, architecture slide | V1 | Actual outputs, limits and simulated-only impact clearly labeled | Pending |
-| V3 · Nov 4 | Both | Verify submission fields; submit by 4 PM Pacific | V2 | Receipt before 6 PM deadline | Pending |
-
-## Daily 15-minute joint checkpoint
-
-| Date | Show each other |
+| Status | Use it when |
 |---|---|
-| Oct 28 | Same app running; ownership agreed |
-| Oct 29 | Clean data, seven-dish assumptions, Meta access status |
-| Oct 30 | Baseline and actual extraction (or clearly labeled manual fallback) |
-| Oct 31 | Ingredient requirements and correction screen |
-| Nov 1 | Confirmed stock feeds feasible prep |
-| Nov 2 | Source-to-explanation flow and failure cases |
-| Nov 3 | Frozen build and complete rehearsal |
-| Nov 4 | Submission fields and receipt |
+| Working now | The named owner is actively doing it; keep at most one or two active items across the board. |
+| Haven't started | Work has not begun, including work blocked on access or a dependency. |
+| Almost done | Implementation exists, but the specifically named verification is still outstanding. |
+| Completed | The completion check has evidence; check the box and record the result. |
 
-If time is tight, keep one image format, one baseline, and seven dish names. Defer PDF, basket analysis, accounts and deployment. Preserve source evidence, human confirmation and deterministic checks.
+**Working now: none.** This documentation update does not mean a code feature is being built. Only Completed items have checked boxes. Don't mark another person's work started or finished without their update/evidence.
+
+## 1 · Setup and understanding
+
+- [x] **G1 · Completed · Both — Share the starter privately.** Location: this GitHub repository. Done/evidence: private `Noorie-Noobie/restaurant-prep-lab`, starter on `main`, exact initial commit in Git history. Next: S2; no teammate invited yet.
+- [x] **S0 · Completed · Both — Prepare the local starter.** Location: `run.sh`, `.venv`, `requirements.lock.txt`. Done/evidence: launcher started on localhost and health returned `ok`; stopped after verification. Next: S1/S2 on each person's laptop.
+- [ ] **S1 · Haven't started · You — Walk through Explore yourself.** Location: `sh run.sh` → http://127.0.0.1:8501. Depends: S0. Next: filter to one month and compare orders, pizzas and sales. Done: record a bestseller and peak weekday/hour, with date range; explain that revenue is not profit.
+- [ ] **S2 · Haven't started · Teammate — Get access and reproduce setup.** Location: GitHub + `CONTRIBUTING.md`. Blocker: exact username and authorized invitation. Next: provide username, then accept/clone/install/download/build/test/run. Done: independent app launch and nine starter tests pass (or current expected count).
+- [ ] **S3 · Haven't started · Both — Agree one shared input/output contract.** Location: add a compact schema section to README. Depends: S1/S2. Next: write one example containing SKU, ingredient quantity/unit, on-hand stock, minutes and confirmation metadata. Done: both can explain and use the same fields without guessing units.
+
+## 2 · Data and demand · You
+
+- [x] **D0 · Completed · You — Download and ingest fictional orders.** Location: `scripts/download_data.py`, `data.py`, `data/PROVENANCE.md`. Done/evidence: checksum-verified source, 49,574 preserved lines, 21,350 orders, 91 SKUs and $817,860.05 in local SQLite. Fresh-download and integrity checks passed. Next: D1.
+- [ ] **D1 · Haven't started · You — Understand the source limitations.** Location: `data/PROVENANCE.md`, `data.py`. Depends: D0. Next: inspect one multi-pizza order and the timezone/status assumptions. Done: explain why identical item rows remain, timezone stays unspecified, and absent dates are not confirmed zero-sales days.
+- [ ] **D2 · Haven't started · You — Add observed-date coverage.** Location: `data.py` / `analytics.py`. Depends: D1. Next: list observed and missing dates; keep unknown closures separate. Done: seven absent calendar dates are flagged, never silently filled as open/zero-sales days.
+- [ ] **D3 · Haven't started · You — Define confirmed planning inputs.** Location: future `data/assumptions/recipes.csv`, `inventory.csv`, `capacity.csv`; validation in `planning.py`. Depends: S3. Next: create one size-specific SKU example, then cover the seven selected names and their sizes. Done: explicit units, recipe amounts, stock and prep minutes validate; invented values are labeled demo assumptions; missing recipes fail clearly.
+- [x] **A0 · Completed · You — Calculate starter sales patterns in code.** Location: `analytics.py`, Explore in `app.py`. Done/evidence: bestseller units/revenue, date filters and weekday-hour distinct-order totals work; repeated-item and full-data tests pass. Next: S1/U1; hourly averages remain A2.
+- [ ] **A1 · Haven't started · You — Cross-check one sales result with SQL.** Location: README's SQLite query and `analytics.py`. Depends: S1/D1. Next: compare a dish's units with the chart for the same date range. Done: figures agree and you can explain the query; implementation evidence stays recorded separately in A0.
+- [ ] **A3 · Haven't started · You — Build the simplest same-weekday baseline.** Location: `planning.py`. Depends: D2/S3. Next: average the last four observed matching weekdays per SKU before a chosen cutoff. Done: returns next-day quantities, cutoff and observation count; future rows excluded and insufficient history handled explicitly.
+- [ ] **A4 · Haven't started · You — Check the baseline on held-out dates.** Location: `tests/` plus a small evaluation result. Depends: A3. Next: hold out the last four weeks and compare with a trailing mean. Done: MAE on known observed dates, no future-data leakage, and whole-year demo menu selection disclosed.
+
+## 3 · First technical milestone: inputs → deterministic prep
+
+- [ ] **P1 · Haven't started · You — Translate demand into ingredient requirements.** Location: `planning.py`. Depends: D3/A3. Next: multiply SKU demand by size-specific recipe quantities. Done: unit-consistent totals match a hand-worked example; unknown ingredients/recipes stop calculation.
+- [ ] **P2 · Haven't started · You — Enforce stock and prep-time limits.** Location: `planning.py`. Depends: P1. Next: implement a simple documented allocation policy and return prep quantities plus unmet demand. Done: no negative stock, no capacity overrun, reproducible result, tests for insufficient stock/time. Current `plan_prep` raises `NotImplementedError`.
+- [ ] **U2 · Haven't started · Teammate — Build the planning input form and wire the result.** Location: `app.py`. Depends: S3/D3 for form; P2 for result. Next: edit labeled demo recipe/stock/capacity inputs and show validation errors; then call the planner. Done: only valid confirmed inputs produce a real Python result, with assumptions and limits visible.
+- [ ] **P3 · Haven't started · Both — Demonstrate the first complete scenario.** Location: Prep Planner screen. Depends: P2/U2. Next: try one base case and one stock-shortage case. Done: both trace inputs → requirements → feasible prep → shortfall, with no model inventing the numbers.
+
+## 4 · Meta and evidence · Teammate
+
+- [x] **M0 · Completed · Teammate — Prepare the adapter and manual validator only.** Location: `meta.py`, Meta Evidence in `app.py`. Done/evidence: disabled-by-default PNG/JPEG adapter and schema validation exist; disabled-call and invalid-extraction tests pass. **This is not live extraction.** Next: M1/M2.
+- [ ] **M1 · Haven't started · Teammate — Check private Meta access and credits.** Location: your Meta account, `.env.example`, `meta.py`. Depends: S2. Next: privately verify model availability, credit allowance and spending limit. Done: access and budget confirmed and local credential setup understood. Do not paste keys into chat/GitHub; no credentials or paid inference are configured by this starter.
+- [ ] **M2 · Haven't started · Teammate — Verify one actual image extraction.** Location: `meta.py`; local labeled demo invoice photo. Depends: M1 plus explicit live-upload/spend authorization. Next: run one PNG/JPEG request and inspect quantity/unit/cost plus quoted evidence. Done: actual response, model/request ID and source references recorded locally; uncertain values remain unresolved. No fake fixture presented as model output.
+- [ ] **M3 · Haven't started · Teammate — Add correction, confirmation and persistence.** Location: `app.py`, local `data/evidence/` and validated stock storage. Depends: D3/M2. Next: let the owner correct extracted fields and confirm before saving. Done: invalid/unconfirmed values blocked; edits and source linkage persist; changing the image invalidates an old candidate; purchases reconciled with on-hand stock. Manual JSON validation alone does not satisfy this task.
+- [ ] **M5 · Haven't started · Teammate — Connect tools and a grounded explanation.** Location: `meta.py`, `app.py`. Depends: P3/M3. Next: expose an allowlisted deterministic planning function, show its arguments/result, then request an evidence-linked explanation. Done: judges can follow source → confirmed stock → actual tool result → explanation; prose cannot override feasibility; reruns do not repeat paid requests.
+
+## 5 · Verification and demo · Both
+
+- [x] **Q1 · Completed · Both — Run starter automated checks.** Location: `tests/test_starter.py`, `VALIDATION.md`. Done/evidence: nine tests pass; compilation, fresh dataset download and localhost health pass. One upstream chart deprecation warning. Next: add checks alongside new features; this does not prove visual quality or live Meta success.
+- [ ] **U1 · Almost done · Teammate — Visually verify the existing three screens.** Location: local app in a browser. Depends: S2 or an available browser. Next: inspect labels, date filters, charts, empty states and narrow-window layout. Done: no clipping; fictional-data and live-Meta-off labels are readable; record observations/screenshots. Implementation and AppTest pass, but visual QA could not run because the isolated browser was unavailable.
+- [ ] **Q2 · Haven't started · You — Verify new forecast/constraint behavior.** Location: `tests/`. Depends: A4/P2. Next: test cutoff leakage, unknown recipes and impossible stock/time. Done: meaningful failure and boundary cases pass, with evidence recorded in the task update.
+- [ ] **Q3 · Haven't started · Teammate — Verify Meta/confirmation failure handling.** Location: `tests/`, `app.py`. Depends: M3/M5. Next: test timeout, refusal, malformed output and stale confirmation without paid calls. Done: recoverable UI, no unconfirmed save or repeated request.
+- [ ] **Q4 · Haven't started · Both — Run the integrated clean-start check.** Location: app + tests. Depends: P3/M5/U1/Q2/Q3. Next: start fresh, run full workflow and inspect Git's staged files. Done: end-to-end demo works; synthetic/live status accurate; secrets and private evidence excluded.
+- [ ] **V1 · Haven't started · Both — Rehearse and package the demo.** Location: README and demo recording. Depends: Q4. Next: rehearse three minutes: rush → invoice → correction → constrained plan. Done: You explain calculations, teammate explains Meta; actual outputs and limits shown, no claimed real-world savings.
+- [ ] **V3 · Haven't started · Both — Submit manually.** Location: hackathon submission page. Depends: V1. Next: verify required fields and upload the agreed demo. Done: confirmation receipt before **November 4, 6 PM Pacific**. Internal submission target: 4 PM Pacific; not an automatic submission promise.
+
+## Later, only after the core flow
+
+- [ ] **A2 · Haven't started · You — Add hourly averages.** Location: `analytics.py`. Depends: D2/P3. Next: divide by observed weekday counts. Done: coverage and denominators displayed; totals and averages clearly distinct.
+- [ ] **M6 · Haven't started · Teammate — Add PDF input if needed.** Location: future PDF-to-image handling and evidence page references. Depends: M5/Q4. Next: support one documented PDF path. Done: page evidence preserved and verified. PDF support is not implemented; image-only demo is acceptable.
+
+Other stretch ideas—basket analysis, accounts, deployment—are outside the current checklist. Keep existing task IDs when updating. Earlier M4 is consolidated into M3's stock-reconciliation completion check; U3 into M5's visible evidence trace; V2 into V1's demo package. These are consolidated scope, not completed work.
+
+## Timing and upkeep
+
+Proposed internal targets: **Oct 28–29** run/reproduce and agree inputs; **Oct 30–31** baseline/form/constraints; **Nov 1–2** integrate evidence and test. **Feature freeze November 2** is an internal target, not a promise; use November 3 for fixes/rehearsal and November 4 for final submission checks.
+
+Whenever this assistant uploads **authorized changes to this project**, update this board's statuses from evidence and refresh README's **Next to tackle** with owner, dependency and done check. Teammates should update their own status when starting/finishing and attach the test/result that supports completion. Use GitHub's pencil editor for a small Markdown change (propose a branch/PR when sharing work), or include `TASKS.md` and README in the normal code PR. No paid Project board or integration is required. This upkeep rule does not authorize unrelated uploads, feature work, merges, public release or deployment.
+
+Current data remains fictional with unspecified local timezone. Raw data, SQLite, keys and private evidence remain excluded from Git. Real-data replacement requires separate provenance/permission checks; it is not represented as completed here.
