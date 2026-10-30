@@ -31,3 +31,15 @@ Network downloads and localhost binding initially required leaving the restricte
 The user subsequently authorized private repository creation and starter upload. The private repository is https://github.com/Noorie-Noobie/restaurant-prep-lab. The earlier “pending approval / no remote” entries above describe the prior preparation stage. No teammate has been invited; a handle is still needed.
 
 Before the initial commit, nine tests passed in 3.77 seconds and 23 candidate files had zero common credential-pattern or private-file matches. Ignore rules were reconfirmed. Raw CSV, generated SQLite, credentials, virtual environment and invoice/evidence contents are excluded. The repository holds the verified download script and original attribution/license. Live Meta and deployment remain unperformed.
+
+## Canonical import backend · 2026-10-30
+
+Audit found pizza-only columns and forced quantity/status, whole-file database replacement, missing operational confirmation/stock and placeholder planning. The new importer is independent; those legacy pizza assumptions remain limited to that demo. Existing user edits were preserved.
+
+Added canonical CSV v1 contract, strict preview and explicit commit API, config/currency/timezone validation, stable identity, versioned snapshot updates, import audit/history and atomic rollback. Dedicated default database: `data/processed/canonical_orders.sqlite`; the original app still uses its pizza database. New raw samples are explicitly synthetic, with no vendor-export or real-PII claim.
+
+57 tests passed (48 new parameterized backend cases plus 9 original cases), 3.89s; one upstream Streamlit/pandas chart warning. Verified repeated distinct item lines, exact and overlapping reimports, partial refunds/void corrections, decimal quantities/currencies, DST/nonexistent timestamps, config mismatch, stale preview/version rejection, mid-transaction and initial-transaction rollback, preservation of unrelated tables and rejection of another application's DB. Test databases were temporary.
+
+Read-only fixture preview passed: 1 order, 2 lines, quantity/fulfilled 4 each, gross 4000 USD cents, discounts 400, refunds 500, net 3100. No canonical database was created by preview; implementation used no app server, vendor/Meta calls, credentials or installs.
+
+Not verified/implemented: real vendor mapping, UI confirmation, live synchronization, restaurant authorization, backup/restore/migrations, production performance, forecast/planner or live Meta. The confirmation API is not an authentication system.

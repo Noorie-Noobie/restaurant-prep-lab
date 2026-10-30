@@ -4,10 +4,12 @@
 
 ## Next to tackle
 
-1. **You · S1:** run the existing app, change Explore's date range, and explain why order count differs from pizza count. No API key needed. Done: record one bestseller and one busiest weekday/hour with the selected date range.
-2. **Teammate · S2:** send your exact GitHub username to the owner; after an authorized invitation, accept it and follow [CONTRIBUTING.md](CONTRIBUTING.md). Done: app and tests run independently on your laptop. **Blocked until invitation/access.**
-3. **Both · S3 → D3:** agree the recipe/stock/prep schema before either person builds against it. You define the units and validation rules; teammate defines the editable form and confirmation fields. Done: one small, explicitly labeled example passes both sides' checks.
-4. **You · A3 / Teammate · U2:** after S3/D3, build a same-weekday demand baseline and the input form separately; connect them through P1/P2's deterministic planner. **Teammate can check Meta account/credits in parallel (M1), without sharing keys in chat.**
+**Current priority: safe order imports.** Import Orders precedes forecasting after the POS-compatibility audit. I1 is a tested canonical contract/backend, not a real vendor integration.
+
+1. **You · I2:** review the synthetic canonical CSV and run `.venv/bin/python scripts/preview_order_fixture.py`. Done: explain 1 order, 2 lines, 4 fulfilled items, $40 gross − $4 discount − $5 refund = $31 net; nothing is saved by preview.
+2. **Teammate · S2 → I3:** after repository access/local setup, build the upload/preview/confirm UI using the documented API. Done: no write before confirmation; all invalid rows block import; stale preview requires review again. UI work has not begun here.
+3. **Both · I4:** map and reconcile one permitted actual POS export. Blocker: no representative permitted export validated yet. Done: documented vendor/report/version support and passing source reconciliation; do not relabel synthetic fixtures as Toast data.
+4. **Both · S3/D3 then You · A3 / Teammate · U2:** resume planning input contract, baseline and planner UI after import acceptance. S1 Explore orientation and gated M1 account/credit checks may happen alongside this; no live Meta feature is enabled.
 
 ## How statuses work
 
@@ -18,7 +20,7 @@
 | Almost done | Implementation exists, but the specifically named verification is still outstanding. |
 | Completed | The completion check has evidence; check the box and record the result. |
 
-**Working now: none.** This documentation update does not mean a code feature is being built. Only Completed items have checked boxes. Don't mark another person's work started or finished without their update/evidence.
+**Working now: none.** I1 backend tests pass; I2/I3/I4 have not started. Only Completed items have checked boxes. Don't mark another person's work started or finished without their update/evidence.
 
 ## 1 · Setup and understanding
 
@@ -26,9 +28,14 @@
 - [x] **S0 · Completed · Both — Prepare the local starter.** Location: `run.sh`, `.venv`, `requirements.lock.txt`. Done/evidence: launcher started on localhost and health returned `ok`; stopped after verification. Next: S1/S2 on each person's laptop.
 - [ ] **S1 · Haven't started · You — Walk through Explore yourself.** Location: `sh run.sh` → http://127.0.0.1:8501. Depends: S0. Next: filter to one month and compare orders, pizzas and sales. Done: record a bestseller and peak weekday/hour, with date range; explain that revenue is not profit.
 - [ ] **S2 · Haven't started · Teammate — Get access and reproduce setup.** Location: GitHub + `CONTRIBUTING.md`. Blocker: exact username and authorized invitation. Next: provide username, then accept/clone/install/download/build/test/run. Done: independent app launch and nine starter tests pass (or current expected count).
-- [ ] **S3 · Haven't started · Both — Agree one shared input/output contract.** Location: add a compact schema section to README. Depends: S1/S2. Next: write one example containing SKU, ingredient quantity/unit, on-hand stock, minutes and confirmation metadata. Done: both can explain and use the same fields without guessing units.
+- [ ] **S3 · Haven't started · Both — Agree one shared input/output contract.** Location: add a compact schema section to README. Depends: S1/S2/I4. Next: write one example containing SKU, ingredient quantity/unit, on-hand stock, minutes and confirmation metadata. Done: both can explain and use the same fields without guessing units.
 
 ## 2 · Data and demand · You
+
+- [x] **I1 · Completed · You — Build a canonical CSV contract and safe import backend.** Location: `src/restaurant_lab/imports.py`, `docs/ORDER_IMPORT_V1.md`, `tests/test_imports.py`. Done/evidence: 48 new backend cases and 9 original tests pass (57 total), including repeat/overlap imports, refund/void handling, DST/currency, stale previews and transactional rollback. Next: I2 review and I3 UI. Backend milestone only; no Toast/Square adapter or production-readiness claim.
+- [ ] **I2 · Haven't started · You — Explain and review the canonical sample.** Location: `tests/fixtures/canonical_v1/valid.csv`, `scripts/preview_order_fixture.py`. Depends: I1. Next: run the read-only preview and check each total by hand. Done: explain quantity versus line count and why a $5 refund does not undo four fulfilled items; note any contract questions.
+- [ ] **I3 · Haven't started · Teammate — Build Import Orders UI.** Location: future app upload screen using `imports.py`. Depends: I1/S2. Next: retain the preview server-side, show rows/errors/configuration and require a separate confirmation action. Done: no writes on upload/rerun; invalid files and stale previews cannot commit; accepted results reconcile; existing Explore is not silently switched to a different source.
+- [ ] **I4 · Haven't started · Both — Validate one real POS mapping.** Location: future provider adapter and source-specific tests. Depends: I2/I3. Blocker: no permitted representative export validated. Next: specify exact vendor/report/version and available fields. Done: source totals and quantity/status/business-date/refund meanings reconcile, reimport is safe, unavailable fields are explicit; no arbitrary-vendor claim.
 
 - [x] **D0 · Completed · You — Download and ingest fictional orders.** Location: `scripts/download_data.py`, `data.py`, `data/PROVENANCE.md`. Done/evidence: checksum-verified source, 49,574 preserved lines, 21,350 orders, 91 SKUs and $817,860.05 in local SQLite. Fresh-download and integrity checks passed. Next: D1.
 - [ ] **D1 · Haven't started · You — Understand the source limitations.** Location: `data/PROVENANCE.md`, `data.py`. Depends: D0. Next: inspect one multi-pizza order and the timezone/status assumptions. Done: explain why identical item rows remain, timezone stays unspecified, and absent dates are not confirmed zero-sales days.
@@ -36,7 +43,7 @@
 - [ ] **D3 · Haven't started · You — Define confirmed planning inputs.** Location: future `data/assumptions/recipes.csv`, `inventory.csv`, `capacity.csv`; validation in `planning.py`. Depends: S3. Next: create one size-specific SKU example, then cover the seven selected names and their sizes. Done: explicit units, recipe amounts, stock and prep minutes validate; invented values are labeled demo assumptions; missing recipes fail clearly.
 - [x] **A0 · Completed · You — Calculate starter sales patterns in code.** Location: `analytics.py`, Explore in `app.py`. Done/evidence: bestseller units/revenue, date filters and weekday-hour distinct-order totals work; repeated-item and full-data tests pass. Next: S1/U1; hourly averages remain A2.
 - [ ] **A1 · Haven't started · You — Cross-check one sales result with SQL.** Location: README's SQLite query and `analytics.py`. Depends: S1/D1. Next: compare a dish's units with the chart for the same date range. Done: figures agree and you can explain the query; implementation evidence stays recorded separately in A0.
-- [ ] **A3 · Haven't started · You — Build the simplest same-weekday baseline.** Location: `planning.py`. Depends: D2/S3. Next: average the last four observed matching weekdays per SKU before a chosen cutoff. Done: returns next-day quantities, cutoff and observation count; future rows excluded and insufficient history handled explicitly.
+- [ ] **A3 · Haven't started · You — Build the simplest same-weekday baseline.** Location: `planning.py`. Depends: D2/S3/I4. Next: average the last four observed matching weekdays per SKU before a chosen cutoff. Done: returns next-day quantities, cutoff and observation count; future rows excluded and insufficient history handled explicitly.
 - [ ] **A4 · Haven't started · You — Check the baseline on held-out dates.** Location: `tests/` plus a small evaluation result. Depends: A3. Next: hold out the last four weeks and compare with a trailing mean. Done: MAE on known observed dates, no future-data leakage, and whole-year demo menu selection disclosed.
 
 ## 3 · First technical milestone: inputs → deterministic prep

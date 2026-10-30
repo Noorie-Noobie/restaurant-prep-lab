@@ -4,12 +4,16 @@
 
 **[Open the shared checklist → TASKS.md](TASKS.md)** — statuses: **Working now**, **Haven't started**, **Almost done**, **Completed**. No code feature is currently marked Working now.
 
+**Import Orders now comes before forecasting.** The canonical backend is implemented/tested; vendor mapping and upload UI are still pending.
+
 | Who / task | Do next | Depends on | Done check |
 |---|---|---|---|
-| **You · S1** | Launch below, filter Explore to one month, compare orders/pizzas/sales | Starter already prepared | Record one bestseller and busiest weekday/hour with the date range |
-| **Teammate · S2** | Give the owner your GitHub username; after invitation, accept and follow [setup steps](CONTRIBUTING.md) | Exact handle + authorized invitation | Your own laptop runs the app and tests |
-| **Both · S3/D3** | Agree recipe amounts/units, confirmed stock and prep-time fields using one labeled example | S1/S2 | Both modules accept the same valid example |
-| **You · A3; Teammate · U2** | Build the same-weekday baseline and editable input form, then connect the deterministic planner | S3/D3; A3 also needs date coverage D2 | P3 demonstrates one base case and one stock shortage |
+| **You · I2** | Read the synthetic example and run `.venv/bin/python scripts/preview_order_fixture.py` | I1 backend complete | Explain why 1 order / 4 fulfilled items has $31 net sales; preview saves nothing |
+| **Teammate · I3** | Build upload → preview/errors → explicit confirm using [the interface](docs/ORDER_IMPORT_V1.md#teammate-interface-preview-first-confirm-second) | S2 access/setup; I1 backend | No writes before confirmation; rejected files preserve data; result shows reconciliation |
+| **Both · I4** | Map one permitted, named POS export to the documented contract | I2/I3 and access to a permitted export | Quantities, void/refund semantics, dates and totals match that source; no generic compatibility claim |
+| **Both · S3/D3, then A3/U2** | Resume recipe/stock inputs and forecast/planner work after ingestion acceptance | I4, plus existing task dependencies | The planner will consume validated data rather than pizza-only assumptions |
+
+The existing Explore app still uses the fictional pizza dataset; the new canonical importer has no upload screen yet.
 
 Meta access/credit checks (**Teammate · M1**) can proceed in parallel after setup; keep keys private. The adapter is a scaffold, not verified live extraction. Proposed internal feature freeze: **November 2**; hackathon deadline: **November 4, 6 PM Pacific**.
 
@@ -32,7 +36,8 @@ Open **http://127.0.0.1:8501**. Stop with **Ctrl+C**. This starts a local proces
 | Build and view the app | Python 3.12 + Streamlit | `app.py`, browser at localhost:8501 |
 | Original transactions | gt fictional pizza dataset, already downloaded | `data/raw/pizzaplace.csv` (do not edit) |
 | Queryable data | SQLite, a local file, no account | `data/processed/restaurant.sqlite` |
-| Clean/import | pandas + Python sqlite3 | `src/restaurant_lab/data.py` |
+| Fictional pizza import | pandas + Python sqlite3 | `src/restaurant_lab/data.py` |
+| Canonical CSV import (backend only) | Python CSV/Decimal + SQLite | `src/restaurant_lab/imports.py`; [contract v1](docs/ORDER_IMPORT_V1.md) |
 | Bestsellers and rush hours | pandas + Altair charts | `src/restaurant_lab/analytics.py` |
 | Forecast and feasible prep | deterministic Python, to implement | `src/restaurant_lab/planning.py` |
 | Invoice image extraction | Meta Muse Spark 1.3, adapter prepared | `src/restaurant_lab/meta.py` |
@@ -41,7 +46,7 @@ Open **http://127.0.0.1:8501**. Stop with **Ctrl+C**. This starts a local proces
 
 ## Already works / remaining
 
-**Works:** immutable raw CSV → validated SQLite, date filtering, units/revenue ranking, weekday-hour order heatmap, seven-dish planning scope, manual extraction-schema validation. All data is fictional, not actual San Francisco restaurant results.
+**Works:** canonical v1 preview/explicit commit, idempotent snapshots, exact reconciliation and rollback tests (backend only, no vendor adapter); immutable raw CSV → validated SQLite, date filtering, units/revenue ranking, weekday-hour order heatmap, seven-dish planning scope, manual extraction-schema validation. All data is fictional, not actual San Francisco restaurant results.
 
 **Scaffold:** forecast, recipe quantities, inventory/capacity planning, review-and-save workflow, grounded model explanations. Meta adapter follows current official API syntax but has **not been called or verified against a live account**. The UI has no live-call button yet.
 
