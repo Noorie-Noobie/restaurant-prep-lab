@@ -4,6 +4,8 @@
 
 ## Next to tackle
 
+**Analytics milestone:** I5 analytics backend completed; all 63 tests pass after hydration. Next: You review the disposable demo; Teammate wire the separate source selector and charts (I6).
+
 **Current priority: safe order imports.** Import Orders precedes forecasting after the POS-compatibility audit. I1 is a tested canonical contract/backend, not a real vendor integration.
 
 1. **You · I2:** review the synthetic canonical CSV and run `.venv/bin/python scripts/preview_order_fixture.py`. Done: explain 1 order, 2 lines, 4 fulfilled items, $40 gross − $4 discount − $5 refund = $31 net; nothing is saved by preview.
@@ -31,6 +33,9 @@
 - [ ] **S3 · Haven't started · Both — Agree one shared input/output contract.** Location: add a compact schema section to README. Depends: S1/S2/I4. Next: write one example containing SKU, ingredient quantity/unit, on-hand stock, minutes and confirmation metadata. Done: both can explain and use the same fields without guessing units.
 
 ## 2 · Data and demand · You
+
+- [x] **I5 · Completed · You — Read canonical orders into dashboard analytics.** Location: `import_analytics.py`, `tests/test_import_analytics.py`, `docs/IMPORTED_ANALYTICS.md`. Evidence: all 63 pytest checks pass (57 existing plus 6 new), and disposable import-to-chart demo passes. Next: teammate I6 source selection and chart wiring. Done: full regression suite passes; source/currency isolation, refunds, voids and business-date/local-hour semantics verified. Backend implemented; no app UI claimed.
+- [ ] **I6 · Haven't started · Teammate — Select imported data explicitly in Explore.** Location: `app.py`, interface in `docs/IMPORTED_ANALYTICS.md`. Depends: I3/I5. Next: add separate pizza/imported source choice, source/location and business-date selectors. Done: correct labels, empty/error states, no mixed currencies/data, and refreshed chart totals match committed imports. Existing app remains unchanged.
 
 - [x] **I1 · Completed · You — Build a canonical CSV contract and safe import backend.** Location: `src/restaurant_lab/imports.py`, `docs/ORDER_IMPORT_V1.md`, `tests/test_imports.py`. Done/evidence: 48 new backend cases and 9 original tests pass (57 total), including repeat/overlap imports, refund/void handling, DST/currency, stale previews and transactional rollback. Next: I2 review and I3 UI. Backend milestone only; no Toast/Square adapter or production-readiness claim.
 - [ ] **I2 · Haven't started · You — Explain and review the canonical sample.** Location: `tests/fixtures/canonical_v1/valid.csv`, `scripts/preview_order_fixture.py`. Depends: I1. Next: run the read-only preview and check each total by hand. Done: explain quantity versus line count and why a $5 refund does not undo four fulfilled items; note any contract questions.

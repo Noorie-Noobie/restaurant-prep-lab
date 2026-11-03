@@ -43,3 +43,11 @@ Added canonical CSV v1 contract, strict preview and explicit commit API, config/
 Read-only fixture preview passed: 1 order, 2 lines, quantity/fulfilled 4 each, gross 4000 USD cents, discounts 400, refunds 500, net 3100. No canonical database was created by preview; implementation used no app server, vendor/Meta calls, credentials or installs.
 
 Not verified/implemented: real vendor mapping, UI confirmation, live synchronization, restaurant authorization, backup/restore/migrations, production performance, forecast/planner or live Meta. The confirmation API is not an authentication system.
+
+## Imported analytics backend · November 2 (backend milestone)
+
+Finder Keep Downloaded was selected for the existing project only. Git/current source files became readable; remote fetch succeeded and main still matches 4f646ece. Original launcher changes preserved. No AGENTS.md found in the project-area search.
+
+Six new read-only analytics checks pass via system Python unittest (0.069s). Fixture demo committed only to a disposable temporary SQLite file and generated /tmp/restaurant-import-analytics-demo.html; expected net 3100 USD cents and one Thursday 01:00 order. Full pytest attempt timed out after 45 seconds while environment hydration remained active; no new full-suite pass claimed. No app server, Meta, POS, credentials, push or deployment. App/upload UI untouched; visual verification of new static demo blocked: supported browser opening returned `Browser is not available: chrome`.
+
+Hydration subsequently completed: Finder's folder progress and iCloud activity indicators disappeared. Final full regression run: **63 passed**, 4.16 seconds, one existing Streamlit/pandas deprecation warning. This supersedes the earlier load timeouts. All started test/check processes exited; no server started. `git diff --check` and syntax parsing passed. I5 is Completed; I6 UI remains Haven't started. Analytics milestone prepared for the authorized upload.

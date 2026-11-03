@@ -2,6 +2,8 @@
 
 ## Next to tackle
 
+**Analytics update:** imported-order analytics backend and six new checks are implemented. [Run the disposable chart demo and see the UI handoff](docs/IMPORTED_ANALYTICS.md). You: review its $31 reconciliation; Aishwarya: add explicit data-source/location selection using the interface. Done: imported charts reconcile without mixing the pizza dataset. All 63 tests pass after hydration completed. App source selection remains teammate UI work.
+
 **[Open the shared checklist → TASKS.md](TASKS.md)** — statuses: **Working now**, **Haven't started**, **Almost done**, **Completed**. No code feature is currently marked Working now.
 
 **Import Orders now comes before forecasting.** The canonical backend is implemented/tested; vendor mapping and upload UI are still pending.
