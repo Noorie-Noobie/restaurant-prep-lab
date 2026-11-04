@@ -32,6 +32,14 @@ The user subsequently authorized private repository creation and starter upload.
 
 Before the initial commit, nine tests passed in 3.77 seconds and 23 candidate files had zero common credential-pattern or private-file matches. Ignore rules were reconfirmed. Raw CSV, generated SQLite, credentials, virtual environment and invoice/evidence contents are excluded. The repository holds the verified download script and original attribution/license. Live Meta and deployment remain unperformed.
 
+## Local launcher repair · 2026-10-29 UTC (not pushed)
+
+Evidence: port 8501 had no listener, health request failed, and previous tool process ID 30230 no longer existed. No retained shutdown traceback was available. This supports server termination, not authentication logout; task-owned process cleanup is the likely cause but the exact termination event was not logged.
+
+Added executable `Start App.command` for user-owned Terminal execution; fixed run.sh to localhost port 8501. Updated README and task S4. Shell syntax checks passed; all nine tests passed (3.35s, one upstream chart warning). Temporary launcher run returned healthy; a second invocation reused the single listener instead of starting a duplicate. Temporary test server stopped afterward.
+
+Computer Use denied `cua.getApp('Terminal')`: "Computer Use is not allowed to use the app 'com.apple.Terminal' for safety reasons." No alternate UI route was attempted. Normal Terminal launch, survival after task completion and reopened Explore are therefore NOT verified. The user must double-click the prepared launcher and keep its Terminal window open. No auto-start service, keep-awake setting, global changes, public binding, Meta call or Git push.
+
 ## Canonical import backend · 2026-10-30
 
 Audit found pizza-only columns and forced quantity/status, whole-file database replacement, missing operational confirmation/stock and placeholder planning. The new importer is independent; those legacy pizza assumptions remain limited to that demo. Existing user edits were preserved.
@@ -42,7 +50,7 @@ Added canonical CSV v1 contract, strict preview and explicit commit API, config/
 
 Read-only fixture preview passed: 1 order, 2 lines, quantity/fulfilled 4 each, gross 4000 USD cents, discounts 400, refunds 500, net 3100. No canonical database was created by preview; implementation used no app server, vendor/Meta calls, credentials or installs.
 
-Not verified/implemented: real vendor mapping, UI confirmation, live synchronization, restaurant authorization, backup/restore/migrations, production performance, forecast/planner or live Meta. The confirmation API is not an authentication system.
+Not verified/implemented: real vendor mapping, UI confirmation, live synchronization, user-owned Terminal persistence, restaurant authorization, backup/restore/migrations, production performance, forecast/planner or live Meta. The confirmation API is not an authentication system.
 
 ## Imported analytics backend · November 2 (backend milestone)
 
@@ -51,3 +59,39 @@ Finder Keep Downloaded was selected for the existing project only. Git/current s
 Six new read-only analytics checks pass via system Python unittest (0.069s). Fixture demo committed only to a disposable temporary SQLite file and generated /tmp/restaurant-import-analytics-demo.html; expected net 3100 USD cents and one Thursday 01:00 order. Full pytest attempt timed out after 45 seconds while environment hydration remained active; no new full-suite pass claimed. No app server, Meta, POS, credentials, push or deployment. App/upload UI untouched; visual verification of new static demo blocked: supported browser opening returned `Browser is not available: chrome`.
 
 Hydration subsequently completed: Finder's folder progress and iCloud activity indicators disappeared. Final full regression run: **63 passed**, 4.16 seconds, one existing Streamlit/pandas deprecation warning. This supersedes the earlier load timeouts. All started test/check processes exited; no server started. `git diff --check` and syntax parsing passed. I5 is Completed; I6 UI remains Haven't started. Analytics milestone prepared for the authorized upload.
+
+## November 3 analytics upload and local forecasting
+
+Analytics-only upload verified on private remote main: dccbca22b3e7a570c0b9abc1e44ee6f0138d11ad. Seven scoped files staged, common-secret/private-path scan and 63 tests passed before push. No GitHub check runs or workflows configured. Pre-existing launcher changes excluded and retained locally.
+
+Local forecasting adds a read-only history-based comparable-weekday baseline and rolling-origin evaluator. Synthetic 12-week demo: forecast 29 items; four held-out Mondays MAE 5 versus 8 for a trailing-four-complete-dates comparator. No real-world accuracy claim. Operational DBs untouched; fixed recipes and planner stub unchanged. Forecast and documentation changes have not been committed or pushed.
+
+Final local regression: **72 passed** in 6.41s (63 prior plus nine new forecasting tests), one existing Streamlit/pandas deprecation warning. Tests cover known mean/read-only DB, rolling-origin metrics, insufficient/missing coverage, future imports/corrections, menu knowledge timestamps, units, invalid cutoff/configuration and skipped unknown actuals. `git diff --check` passed. No app UI or live model call was involved.
+
+## November 4 connected operations demo (local only)
+
+Fetched remote before edits; no remote divergence from dccbca22. Preserved existing forecast and launcher changes. Replaced only the previously untouched Prep Planner scaffold with a single-SKU synthetic flow calling the canonical-history forecast and new fixed-recipe planner. The 2015 Explore dataset remains separate. No live inventory or recipe writes.
+
+Final full regression: **83 passed in 7.05s**, seven occurrences of the existing Streamlit/pandas chart deprecation warning. New planning coverage includes unit conversion/mismatch, invalid quantities, missing input, time/stock limits, shared ingredient allocation and explicit UI confirmation plus two scenarios. The first UI test attempt failed because the test reran the form between checking and submitting; corrected to submit form values together, then reran the complete suite successfully. `pip check`: no broken requirements. `git diff --check`: passed.
+
+Actual Google Chrome tab opened at http://127.0.0.1:8501/ and Prep Planner selected. Browser interaction verified default 29 expected / 20 feasible / 9 unmet / 40 minutes and 900 g cheese shortage; editing cheese to 3,500 g produced 29 feasible / 0 unmet / 58 minutes. Fixed recipe unchanged. Later caption-only edit distinguishes planner demo from historical Explore; automated tests cover final code. No video recorded.
+
+Read-only release review: repo remains private, GitHub licenseInfo null; 44 candidate files and 42 unique history blobs scanned for common credential patterns with zero matches. Ignore rules verified; 38 dependency metadata entries recorded. This is not legal/license compatibility certification or a guarantee of no secrets. Latest code unpushed; no visibility change, deployment, merge or submission. Live Meta still unverified and disabled. Three-minute walkthrough and release gates are in docs/DEMO_WALKTHROUGH.md and docs/PUBLIC_RELEASE_REVIEW.md.
+
+Local server started using run.sh in task session 45899, localhost only; no Terminal UI, launch agent or persistent service. A recording should use the user's own launcher window because task-hosted server survival after task cleanup is not guaranteed.
+
+## November 4 Meta synthetic-stock integration (local, not pushed)
+
+Official Meta models, pricing, structured output and Chat Completions schema checked. Prepared direct `https://api.meta.ai/v1/chat/completions` integration with `muse-spark-1.3` Standard, `store=false`, 1,024 completion-token limit including reasoning, fixed synthetic counted-stock note, no redirects/retries, and explicit opt-in plus runtime gates. No API call made. The agent process has no MODEL_API_KEY and META_LIVE_ENABLED is not true; only booleans inspected, not credential values or ignored files. No ollama, llama-server or muse executable found on PATH; no runtime or weights installed.
+
+New `meta_stock.py` validates exact evidence quotes, unique ingredient records, finite quantities and source hash; confirmation retains before/after values and request/model identity in session. `meta_stock_ui.py` shows the candidate and explicit review form, and initializes planner inputs only after confirmation. UI refuses to fabricate a live result while blocked. Original image adapter remains unverified. No tool-calling explanation or recipe changes added.
+
+Final suite: **97 passed in 7.96s**, eleven occurrences of the existing upstream Streamlit/pandas deprecation warning. All Meta responses in tests are explicit mocked fixtures, not live model output. Tests cover blocked credentials/consent, bounded request shape, extraction-to-planner flow, rejected evidence/duplicate/negative/null quantities, refusal/truncation/HTTP/timeout, stale source, UI confirmation, repeat-call prevention and disabled default UI. First new UI check exposed that the button remained visually enabled in the call's render; added immediate state rerender with retained error message, then reran successfully. `git diff --check` passed.
+
+Remaining live blocker: privately configured Meta API key, account/model/credit availability and explicit authorization for one synthetic request's usage. No credentials created or changed, terms accepted, inference charges incurred, private data transmitted, push/public release/deployment performed. Detailed service/rate/setup/evidence requirements are in docs/META_INTEGRATION.md. Existing unpushed forecast/planning and separate launcher edits preserved.
+
+## November 4 authorized private completion upload
+
+User authorized uploading the remaining restaurant project work. Reviewed all forecast/planner/Meta code, tests and guides; remote main was dccbca22 with no other branches or open PRs, destination Noorie-Noobie/restaurant-prep-lab verified private. Updated README/task statuses to distinguish the connected synthetic planner from pending imported-data UI, actual Meta verification and public release. No teammate-specific UI was present to integrate. Removed user-specific README launch paths and excluded the separate existing run.sh/Start App.command repair; those remain local.
+
+Pre-upload regression: **97 passed in 6.63 seconds**, 11 occurrences of the existing Streamlit/pandas deprecation warning. `pip check`: no broken requirements. `git diff --check` passed. Meta tests use mocked requests only; no live API call, secret configuration, publication, deployment or submission. Credentials, raw CSV, generated databases and private evidence remain ignored. See the upload commit in Git history for the exact included files.

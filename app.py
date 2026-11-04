@@ -3,14 +3,15 @@ import altair as alt
 import streamlit as st
 from restaurant_lab.config import DB_PATH
 from restaurant_lab.data import load_orders
-from restaurant_lab.analytics import bestsellers, rush_hours, planning_menu
-from restaurant_lab.meta import validate_extraction
+from restaurant_lab.analytics import bestsellers, rush_hours
+from restaurant_lab.meta_stock_ui import render_meta_stock
+from restaurant_lab.planner_ui import render_planner
 
 st.set_page_config(page_title='Restaurant Prep Lab', page_icon='🍕', layout='wide')
 st.title('Restaurant Prep Lab')
-st.caption('Fictional pizza restaurant • 2015 historical data • local times, timezone unspecified')
 page = st.sidebar.radio('Workspace', ['Explore','Prep Planner','Meta Evidence'])
-st.sidebar.caption('Starter: no API requests, no cloud database, no live restaurant data.')
+st.caption('Fictional pizza restaurant • 2015 historical data • local times, timezone unspecified' if page == 'Explore' else 'Restaurant operations prototype • explicitly labeled demo inputs • no live restaurant data')
+st.sidebar.caption('Synthetic demos • no live restaurant database. Meta requests require explicit opt-in and configured access.')
 if page == 'Explore':
     if not DB_PATH.exists():
         st.info('Run: python -m restaurant_lab.data'); st.stop()
@@ -34,22 +35,6 @@ if page == 'Explore':
     st.altair_chart(alt.Chart(heat).mark_rect().encode(x=alt.X('hour:O', title='Local hour'), y=alt.Y('weekday:N', sort=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']), color=alt.Color('orders:Q', scale=alt.Scale(scheme='yelloworangered')), tooltip=['weekday','hour','orders']), width='stretch')
     st.caption('Revenue is sales, not profit. Customer identities and repeat visits are unavailable.')
 elif page == 'Prep Planner':
-    st.subheader('Seven-dish planning scope')
-    st.warning('Scaffold only: forecast and feasible prep calculation are not implemented yet.')
-    if DB_PATH.exists(): st.dataframe(planning_menu(load_orders()), hide_index=True)
-    st.write('Next: size-specific recipes → confirmed stock → demand baseline → ingredient/time checks → feasible prep quantities.')
-    st.caption('The seven names are selected by full-dataset units, with alphabetical tie breaks. All sizes remain separate item IDs. Recipe amounts, stock, costs and capacity must be labeled demo assumptions.')
+    render_planner()
 else:
-    st.subheader('Meta Evidence · Muse Spark')
-    st.info('Manual review rehearsal. No live model output has been generated.')
-    st.write('Invoice photo → Muse Spark structured fields + source evidence → human correction → validated stock → deterministic planner → grounded explanation')
-    st.file_uploader('Preview an invoice photo (kept in this session; not sent to Meta)', type=['png','jpg','jpeg'], key='photo')
-    if st.session_state.photo: st.image(st.session_state.photo, width=500)
-    st.caption('The adapter is in src/restaurant_lab/meta.py. Live-call controls, durable confirmation and planner handoff are teammate tasks M1–M4.')
-    raw = st.text_area('Optional manual candidate JSON for validation (not model output)', value='{"ingredients": []}', height=150)
-    if st.button('Validate manual candidate'):
-        try:
-            result = validate_extraction(json.loads(raw))
-            st.json(result)
-            st.success('Schema valid. Human confirmation and saving are still required; nothing written to inventory.')
-        except Exception as exc: st.error(str(exc))
+    render_meta_stock()

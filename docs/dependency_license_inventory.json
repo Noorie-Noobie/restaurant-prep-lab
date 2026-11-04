@@ -1,0 +1,230 @@
+[
+  {
+    "name": "altair",
+    "installed_version": "6.3.0",
+    "license_metadata_excerpt": "Copyright (c) 2015-2025, Vega-Altair Developers\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice, this\n  list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright notice,\n  this list of conditions and the following disclaimer in the documentation\n  an",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "anyio",
+    "installed_version": "4.15.1",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "attrs",
+    "installed_version": "26.1.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "certifi",
+    "installed_version": "2026.10.23",
+    "license_metadata_excerpt": "MPL-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "charset-normalizer",
+    "installed_version": "3.5.2",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "click",
+    "installed_version": "8.5.0",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "h11",
+    "installed_version": "0.16.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "idna",
+    "installed_version": "3.20",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "iniconfig",
+    "installed_version": "2.3.1",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "itsdangerous",
+    "installed_version": "2.2.0",
+    "license_metadata_excerpt": "Development Status :: 5 - Production/Stable; Intended Audience :: Developers; License :: OSI Approved :: BSD License; Operating System :: OS Independent; Programming Language :: Python; Typing :: Typed",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "Jinja2",
+    "installed_version": "3.1.6",
+    "license_metadata_excerpt": "Development Status :: 5 - Production/Stable; Environment :: Web Environment; Intended Audience :: Developers; License :: OSI Approved :: BSD License; Operating System :: OS Independent; Programming Language :: Python; Topic :: Internet :: WWW/HTTP :: Dynamic Content; Topic :: Text Processing :: Markup :: HTML; Typing :: Typed",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "jsonschema",
+    "installed_version": "4.26.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "jsonschema-specifications",
+    "installed_version": "2025.9.1",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "MarkupSafe",
+    "installed_version": "3.0.4",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "narwhals",
+    "installed_version": "2.28.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "numpy",
+    "installed_version": "2.5.4",
+    "license_metadata_excerpt": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "packaging",
+    "installed_version": "26.3",
+    "license_metadata_excerpt": "Apache-2.0 OR BSD-2-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "pandas",
+    "installed_version": "3.1.0",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "pillow",
+    "installed_version": "13.0.0",
+    "license_metadata_excerpt": "MIT-CMU",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "pluggy",
+    "installed_version": "1.7.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "protobuf",
+    "installed_version": "7.36.2",
+    "license_metadata_excerpt": "3-Clause BSD License",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "pyarrow",
+    "installed_version": "26.0.0",
+    "license_metadata_excerpt": "Apache-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "pydeck",
+    "installed_version": "0.9.3",
+    "license_metadata_excerpt": "Apache License 2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "Pygments",
+    "installed_version": "2.21.0",
+    "license_metadata_excerpt": "BSD-2-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "pytest",
+    "installed_version": "9.2.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "python-dateutil",
+    "installed_version": "3.0.0",
+    "license_metadata_excerpt": "Dual License",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "python-multipart",
+    "installed_version": "0.0.32",
+    "license_metadata_excerpt": "Apache-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "referencing",
+    "installed_version": "0.37.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "requests",
+    "installed_version": "2.34.2",
+    "license_metadata_excerpt": "Apache-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "rpds-py",
+    "installed_version": "2026.9.1",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "six",
+    "installed_version": "1.17.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "starlette",
+    "installed_version": "1.10.0",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "streamlit",
+    "installed_version": "1.66.1",
+    "license_metadata_excerpt": "Apache-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "typing_extensions",
+    "installed_version": "4.16.0",
+    "license_metadata_excerpt": "PSF-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "tzdata",
+    "installed_version": "2026.6",
+    "license_metadata_excerpt": "Apache-2.0",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "urllib3",
+    "installed_version": "2.8.0",
+    "license_metadata_excerpt": "MIT",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "uvicorn",
+    "installed_version": "0.54.0",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  },
+  {
+    "name": "websockets",
+    "installed_version": "17.3",
+    "license_metadata_excerpt": "BSD-3-Clause",
+    "note": "Metadata inventory, not a license compatibility determination; inspect upstream license notices before release."
+  }
+]
