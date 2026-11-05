@@ -25,6 +25,9 @@ Follow [CONTRIBUTING.md](CONTRIBUTING.md) for first-time setup. From the cloned 
 sh run.sh
 ```
 
+### Youtube Video
+https://youtu.be/TwzNbtjh0m8
+
 Open the localhost URL printed by Streamlit (normally http://127.0.0.1:8501). Keep your launch Terminal open; stop with Control+C. Closing a browser tab does not stop the server. Sleep or shutdown interrupts availability. This is a local foreground app, not a hosted service. The separate local `Start App.command` launcher repair is not included in this upload.
 
 ## Exact tools and locations
