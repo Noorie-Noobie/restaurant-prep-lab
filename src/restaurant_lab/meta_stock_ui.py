@@ -35,7 +35,8 @@ def render_meta_stock():
                 try:
                     audit=confirm_stock(record,corrected,confirmed=reviewed)
                     st.session_state.meta_confirmed_stock=audit
-                    for name,value in audit['stock'].items():st.session_state['stock_'+name]=float(value['quantity'])
+                    st.session_state['planner_stock_values']={name:float(value['quantity']) for name,value in audit['stock'].items()}
+                    st.session_state['planner_stock_revision']=audit['confirmed_at']
                     st.success('Confirmed for this session. Open Prep Planner, review its stock form and calculate. No operational database was changed.')
                 except ValueError as exc:st.error(str(exc))
     if st.session_state.get('meta_stock_attempted'):

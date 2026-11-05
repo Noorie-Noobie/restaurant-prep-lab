@@ -39,8 +39,18 @@ def render_planner():
     audit=st.session_state.get('meta_confirmed_stock')
     if audit:
         st.caption('Stock initialized from human-reviewed Meta synthetic note. Request: '+audit['request_id']+'; subsequent edits are manual scenario changes.')
-    for name,default in [('dough',10000.0),('cheese',2000.0),('sauce',3000.0)]:
-        if 'stock_'+name not in st.session_state:st.session_state['stock_'+name]=default
+    # Widget keys are cleaned up when their screen disappears. Keep committed
+    # scenario inputs separately, and apply each reviewed Meta handoff once.
+    if 'planner_stock_values' not in st.session_state:
+        st.session_state['planner_stock_values']=(
+            {name:float(value['quantity']) for name,value in audit['stock'].items()}
+            if audit else {'dough':10000.0,'cheese':2000.0,'sauce':3000.0})
+    revision=st.session_state.get('planner_stock_revision')
+    new_handoff=revision != st.session_state.get('planner_widget_revision')
+    for name,value in st.session_state['planner_stock_values'].items():
+        if new_handoff or 'stock_'+name not in st.session_state:
+            st.session_state['stock_'+name]=value
+    st.session_state['planner_widget_revision']=revision
     with st.form('stock_scenario'):
         fields=st.columns(4)
         with fields[0]:
@@ -54,6 +64,7 @@ def render_planner():
         confirmed=st.checkbox('I reviewed these demo stock amounts and fixed recipe')
         calculate=st.form_submit_button('Calculate prep scenario')
     if not calculate:return
+    st.session_state['planner_stock_values']={'dough':dough,'cheese':cheese,'sauce':sauce}
     if not confirmed:st.error('Review and confirm the demo inputs before calculating.');return
     plan=plan_prep({'pizza-demo':demand},RECIPES,{
         'dough':{'quantity':dough,'unit':'g'},'cheese':{'quantity':cheese,'unit':'g'},

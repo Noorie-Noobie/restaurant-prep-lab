@@ -4,6 +4,8 @@
 
 ## Next to tackle
 
+**Planner handoff fix:** confirmed Meta stock and submitted manual scenario amounts now live outside temporary widget keys. Reconciled with teammate commit `d9673a5`; 100 tests and offline browser handoff/navigation checks pass. Next: pull latest main and re-record the ending in the normal app with genuine reviewed stock or explicitly manual inputs. The exact all-zero video outcome was not reproduced; navigation-related input loss was reproduced and fixed.
+
 **Presentation update:** Explore/Prep Planner now use a warm restaurant-inspired palette, stronger heading hierarchy and numbered chart sections. Ordinary Chrome visual checks and both prep scenarios passed; calculation and Meta consent logic are unchanged. Both: pull latest main and rehearse current visuals.
 
 This update includes forecasting, the synthetic fixed-recipe planner and offline-tested Meta stock-note integration. No actual Meta response exists. Explore still uses the fictional historical pizza dataset; I3/I6 are not connected. No teammate branch/PR was available at the November 4 repository check.
@@ -94,3 +96,5 @@ Proposed internal targets: **Oct 28–29** run/reproduce and agree inputs; **Oct
 Whenever this assistant uploads **authorized changes to this project**, update this board's statuses from evidence and refresh README's **Next to tackle** with owner, dependency and done check. Teammates should update their own status when starting/finishing and attach the test/result that supports completion. Use GitHub's pencil editor for a small Markdown change (propose a branch/PR when sharing work), or include `TASKS.md` and README in the normal code PR. No paid Project board or integration is required. This upkeep rule does not authorize unrelated uploads, feature work, merges, public release or deployment.
 
 Current data remains fictional with unspecified local timezone. Raw data, SQLite, keys and private evidence remain excluded from Git. Real-data replacement requires separate provenance/permission checks; it is not represented as completed here.
+
+- [ ] **M4 · Almost done · Both — Preserve confirmed stock across navigation.** Local fix: `meta_stock_ui.py`, `planner_ui.py`; three new regression tests. Evidence: 100 offline tests pass. Remaining: teammate replay using genuine reviewed stock; offline browser handoff/navigation checks passed. Next: verify 10,000 g dough / 2,000 g cheese / 3,000 g sauce before calculating 20 feasible portions. No new live extraction needed if a valid reviewed response remains in the session.

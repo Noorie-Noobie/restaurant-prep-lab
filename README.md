@@ -2,6 +2,8 @@
 
 ## Next to tackle
 
+**Planner handoff fix:** confirmed Meta stock and submitted manual scenario amounts now live outside temporary widget keys. Reconciled with teammate commit `d9673a5`; 100 tests and offline browser handoff/navigation checks pass. Next: pull latest main and re-record the ending in the normal app with genuine reviewed stock or explicitly manual inputs. The exact all-zero video outcome was not reproduced; navigation-related input loss was reproduced and fixed.
+
 **Presentation update:** Explore and Prep Planner now use a warm cream, forest-green and burnt-orange palette, larger editorial headings, numbered chart sections and a three-step prep flow. Next: both teammates pull the latest main branch and rehearse the two resource scenarios below.
 
 The repository includes the forecast, fixed-recipe planner and synthetic Meta extraction/review integration code. **No actual Meta response has been verified.** The existing Explore dashboard remains separate from imported-order analytics. No teammate-specific UI branch or pull request was available at the November 4 check.

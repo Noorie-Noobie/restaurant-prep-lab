@@ -111,3 +111,21 @@ Final regression: **97 passed in 4.89 seconds**. Ordinary Chrome verified the co
 ## Authorized UI upload
 
 User authorized sharing the completed UI improvements in the existing private repository. Remote main matched local HEAD before staging. Pre-upload regression: **97 passed in 5.36 seconds**; staged whitespace and common credential-pattern checks passed. Included presentation code, project theme and updated checklist/validation. Excluded the separate `run.sh` and `Start App.command` launcher changes, raw data, databases, credentials and private evidence. Live Meta and mobile visual review remain unverified. No deployment, visibility change or permission grant.
+
+## Meta-to-planner navigation diagnosis — local, unpushed
+
+Remote main advanced to d9673a5 with teammate changes raising completion limit to 4096 and adding finish-reason diagnostics. Fetched and inspected only; did not overwrite or merge these changes. Local HEAD remains 50ff8f4. Existing launcher edits preserved.
+
+Reproduced a related real defect: after manually changing cheese to 3500 g, navigating away and back reset it to 2000 g. Existing fresh-session handoff test passed and did not reproduce the video's exact all-zero result. Cause of the reproduced defect: using Streamlit widget-owned keys as durable scenario state; widgets are removed when their screen is absent. Added separate session scenario values and revision-based reviewed-stock application. Submitted manual zeros remain valid; stock is never replaced merely because it is zero.
+
+Three new mocked UI regressions cover planner visited before extraction, confirmed corrected amounts via an intermediate screen, and manual zero stock without Meta. Final full suite: **100 passed in 12.05 seconds**. `git diff --check` passed. No live request, credentials accessed, browser replay of the teammate environment, push or publication. Real browser verification and reconciliation with remote token-limit changes remain pending.
+
+## Reconciliation and actual-browser handoff verification
+
+Fast-forwarded local main to teammate commit d9673a5, then reapplied only the local handoff fix without conflicts. Preserved token cap 4096, diagnostic error message, UI cost disclosure and matching test. Launcher edits remained untouched. Combined regression: **100 passed in 11.26 seconds**.
+
+Actual in-app browser QA used an isolated temporary localhost:8502 harness with explicitly labeled mock request ID and all requests.Session network calls blocked. Review checkbox and confirmation produced the session confirmation message; Prep Planner showed MOCK-OFFLINE-QA plus 10000/2000/3000 g. Calculation yielded 20 feasible, 9 unmet, 40 minutes and 900 g cheese shortfall. Manual cheese edit to 3500 g yielded 29/0/58, then survived Explore and return to Planner. Screenshot visually inspected. Closed the QA tab and stopped its temporary server. This is offline integration evidence, not a genuine Meta response or proof of the teammate video's exact cause. Normal app recording and authorized upload remain pending.
+
+## Authorized planner fix upload
+
+User approved sharing the reconciled state fix. Includes only planner/Meta UI session-state changes, three regression tests and documentation. Combined suite passed 100 tests; isolated offline browser handoff and navigation verified. Excludes run.sh, Start App.command, temporary mock harness, recordings, credentials and data. No live API request or deployment.

@@ -132,3 +132,53 @@ def test_default_ui_is_blocked_and_does_not_invent_result(monkeypatch):
     app.checkbox[0].check().run()
     assert app.button[0].disabled and calls==[]
     assert any('Live verification blocked' in w.value for w in app.warning)
+
+
+def test_reviewed_stock_survives_previously_visited_planner(monkeypatch):
+    authorize(monkeypatch); calls=mock_post(monkeypatch)
+    app=AppTest.from_file(ROOT/'app.py').run(timeout=30)
+    app.sidebar.radio[0].set_value('Prep Planner').run()
+    for widget in app.number_input[:3]: widget.set_value(0.0)
+    app.checkbox[0].check();app.button[0].click().run()
+    app.sidebar.radio[0].set_value('Meta Evidence').run()
+    app.checkbox[0].check().run();app.button[0].click().run()
+    app.checkbox[1].check()
+    next(b for b in app.button if b.label=='Confirm stock for Prep Planner').click().run()
+    app.sidebar.radio[0].set_value('Prep Planner').run()
+    assert [n.value for n in app.number_input[:3]]==[10000.0,2000.0,3000.0]
+    app.checkbox[0].check();app.button[0].click().run()
+    assert [m.value for m in app.metric]==['29','20','9','40']
+    app.number_input[1].set_value(3500.0);app.button[0].click().run()
+    app.sidebar.radio[0].set_value('Explore').run()
+    app.sidebar.radio[0].set_value('Prep Planner').run()
+    assert [n.value for n in app.number_input[:3]]==[10000.0,3500.0,3000.0]
+    assert len(calls)==1
+
+
+def test_corrected_handoff_persists_across_intermediate_screen(monkeypatch):
+    authorize(monkeypatch);calls=mock_post(monkeypatch)
+    app=AppTest.from_file(ROOT/'app.py').run(timeout=30)
+    app.sidebar.radio[0].set_value('Meta Evidence').run()
+    app.checkbox[0].check().run();app.button[0].click().run()
+    app.number_input[1].set_value(2500.0)
+    app.checkbox[1].check()
+    next(b for b in app.button if b.label=='Confirm stock for Prep Planner').click().run()
+    app.run()
+    app.sidebar.radio[0].set_value('Explore').run()
+    app.sidebar.radio[0].set_value('Prep Planner').run()
+    assert [n.value for n in app.number_input[:3]]==[10000.0,2500.0,3000.0]
+    app.checkbox[0].check();app.button[0].click().run()
+    assert [m.value for m in app.metric]==['29','25','4','50']
+    assert len(calls)==1
+
+
+def test_manual_zero_stock_is_preserved_without_meta(monkeypatch):
+    monkeypatch.delenv('MODEL_API_KEY',raising=False)
+    app=AppTest.from_file(ROOT/'app.py').run(timeout=30)
+    app.sidebar.radio[0].set_value('Prep Planner').run()
+    app.number_input[1].set_value(0.0)
+    app.checkbox[0].check();app.button[0].click().run()
+    assert [m.value for m in app.metric]==['29','0','29','0']
+    app.sidebar.radio[0].set_value('Explore').run()
+    app.sidebar.radio[0].set_value('Prep Planner').run()
+    assert [n.value for n in app.number_input[:3]]==[10000.0,0.0,3000.0]
