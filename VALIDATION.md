@@ -129,3 +129,7 @@ Actual in-app browser QA used an isolated temporary localhost:8502 harness with 
 ## Authorized planner fix upload
 
 User approved sharing the reconciled state fix. Includes only planner/Meta UI session-state changes, three regression tests and documentation. Combined suite passed 100 tests; isolated offline browser handoff and navigation verified. Excludes run.sh, Start App.command, temporary mock harness, recordings, credentials and data. No live API request or deployment.
+
+## MIT/public-release authorization
+
+User approved MIT and public release. Remote main matched 6eb5b29 before edits. Added standard project license with both contributors, retained third-party notices, and refreshed next steps. Documentation/license-only change; prior 100-test result retained without claiming a new run. No launcher, credentials, operational database or recording included.

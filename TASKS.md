@@ -13,7 +13,7 @@ This update includes forecasting, the synthetic fixed-recipe planner and offline
 1. **Teammate · M1/M2/M3:** configure private access/budget, authorize one synthetic request, inspect actual evidence and confirm stock into Prep Planner. Done: live response and the review-to-plan scenario verified. A Team ID alone is not an API credential.
 2. **You · V1:** rehearse `docs/DEMO_WALKTHROUGH.md`. Done: explain both resource scenarios and disclose synthetic data and remaining live verification.
 3. **Both · I3/I6:** identify the actual teammate UI branch, preserve its work and connect the documented import/analytics interfaces. Done: upload preview/confirm and explicitly selected imported charts reconcile.
-4. **Both · release:** resolve `docs/PUBLIC_RELEASE_REVIEW.md`, agree license and separately authorize visibility change; record and submit only after verification. Repository remains private.
+4. **Both · release:** resolve `docs/PUBLIC_RELEASE_REVIEW.md`, MIT license and public visibility are authorized; record and submit only after verification.
 
 - [x] **U1 · Completed · Both — Improve demo presentation.** Location: `app.py`, `presentation.py`, `planner_ui.py`, `.streamlit/config.toml`. Evidence: ordinary Chrome review of Explore and both prep scenarios; 97 regression tests passed. Next: V1 rehearsal; mobile review remains untested.
 
@@ -98,3 +98,5 @@ Whenever this assistant uploads **authorized changes to this project**, update t
 Current data remains fictional with unspecified local timezone. Raw data, SQLite, keys and private evidence remain excluded from Git. Real-data replacement requires separate provenance/permission checks; it is not represented as completed here.
 
 - [ ] **M4 · Almost done · Both — Preserve confirmed stock across navigation.** Local fix: `meta_stock_ui.py`, `planner_ui.py`; three new regression tests. Evidence: 100 offline tests pass. Remaining: teammate replay using genuine reviewed stock; offline browser handoff/navigation checks passed. Next: verify 10,000 g dough / 2,000 g cheese / 3,000 g sauce before calculating 20 feasible portions. No new live extraction needed if a valid reviewed response remains in the session.
+
+- [x] **L1 · Completed · Both — Approve project license.** User approved MIT and public release. Standard LICENSE credits both project contributors; third-party notices preserved. Next: independently verify the final demo and submission receipt.

@@ -13,7 +13,7 @@ The repository includes the forecast, fixed-recipe planner and synthetic Meta ex
 | **Teammate · M1/M2/M3** | Follow [Meta setup and live verification](docs/META_INTEGRATION.md), then run one explicitly authorized synthetic request | Private credentials and billing/credits ready; actual response, source review and planner handoff verified |
 | **You · V1** | Rehearse [the three-minute walkthrough](docs/DEMO_WALKTHROUGH.md) | Explain 29 expected → 20 feasible / 900 g cheese shortage → 29 feasible after hypothetical replenishment; keep recipes fixed |
 | **Both · I3/I6** | Identify the teammate's actual UI branch and connect upload/preview/confirm and imported-source selection | Use [import contract](docs/ORDER_IMPORT_V1.md) and [analytics interface](docs/IMPORTED_ANALYTICS.md); totals reconcile without mixing datasets |
-| **Both · release** | Review [public-release blockers](docs/PUBLIC_RELEASE_REVIEW.md) | Agree license, verify live demonstration, record video and separately authorize public visibility; no submission has occurred |
+| **Both · release** | Review [public-release blockers](docs/PUBLIC_RELEASE_REVIEW.md) | MIT license and public release authorized; verify the final demonstration, video and submission separately; no submission has occurred |
 
 [Open the shared checklist → TASKS.md](TASKS.md). Statuses: **Working now**, **Haven't started**, **Almost done**, **Completed**. No feature is claimed actively in progress at handoff. Latest automated evidence: **97 tests passed**, including mocked provider tests; this is not proof of live Meta operation or real-world accuracy.
 
@@ -95,3 +95,7 @@ The data download is checksum-verified; see `scripts/download_data.py` and `data
 Only Meta inference needs a service account for this stack. The database, charts and local app have no service cost. The `.env.example` contains placeholders only and is not auto-loaded. Do not paste keys into chat or commit `.env`. The current counted-stock API requires explicit `authorized=True` (the older image adapter uses `allow_live=True`) and `META_LIVE_ENABLED=true`, plus `MODEL_API_KEY`. Neither has been enabled. Verify credits, allowed models and spending limits privately before integration testing; unused cloud offers do not need to shape this app.
 
 Official docs checked October 28, 2026: [models](https://dev.meta.ai/docs/models), [structured output](https://dev.meta.ai/docs/structured-output), [image understanding](https://dev.meta.ai/docs/image-understanding). API endpoint: `https://api.meta.ai/v1/chat/completions`; default model: `muse-spark-1.3`. Requests goes directly to Meta; no OpenAI model/API service is involved.
+
+## License
+
+Project code is released under the [MIT License](LICENSE), copyright 2026 Arshnoor Bhatia and Aishwarya Srivastava. Third-party data and dependencies retain their own licenses; see [dataset provenance](data/PROVENANCE.md) and the [original gt notice](data/raw/LICENSE-gt.txt).

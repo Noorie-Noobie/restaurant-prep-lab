@@ -1,6 +1,6 @@
 # Public-release readiness review — November 4
 
-**Not released.** Repository is still private; the current private upload includes forecasting, planner/UI, offline-tested Meta integration and these documents. See Git history for the exact upload commit. No deployment, visibility change, recording or submission has been performed.
+**Historical review; superseded by the approved release below.** Repository is still private; the current private upload includes forecasting, planner/UI, offline-tested Meta integration and these documents. See Git history for the exact upload commit. No deployment, visibility change, recording or submission has been performed.
 
 ## Required decisions / remaining blockers
 
@@ -23,3 +23,7 @@
 The recordable path is a single fixed-recipe synthetic SKU using canonical imported history in a disposable demo database. Historical pizza Explore remains a separate fictional dataset. The normal importer/backend is not a verified Toast/Square adapter or connected upload-to-planner flow. Coverage/menu forms, persisted operational stock, restaurant authentication/isolation, backups, live POS, holidays and stockout-adjusted demand are unfinished. Multi-SKU backend allocation uses deterministic alphabetical order, not profit optimization; the demo UI exposes one SKU only.
 
 Publishing readiness is blocked by the decisions above, even though the local deterministic operations flow can be demonstrated.
+
+## Approved public release
+
+User approved the MIT project license and public visibility after being told about historical local username/path and contributor metadata. Added the standard MIT license crediting Arshnoor Bhatia and Aishwarya Srivastava; preserved the separate dataset notice. Latest scoped review covered 52 tracked files and 79 historical blobs with no common credential-pattern matches; no guarantee of absence of every secret. No private operational data or recordings are tracked. Public access does not imply production readiness, verified live integration on every machine, deployment or submission. Exact visibility is verified through GitHub after the release operation.
