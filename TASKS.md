@@ -4,12 +4,16 @@
 
 ## Next to tackle
 
+**Presentation update:** Explore/Prep Planner now use a warm restaurant-inspired palette, stronger heading hierarchy and numbered chart sections. Ordinary Chrome visual checks and both prep scenarios passed; calculation and Meta consent logic are unchanged. Both: pull latest main and rehearse current visuals.
+
 This update includes forecasting, the synthetic fixed-recipe planner and offline-tested Meta stock-note integration. No actual Meta response exists. Explore still uses the fictional historical pizza dataset; I3/I6 are not connected. No teammate branch/PR was available at the November 4 repository check.
 
 1. **Teammate · M1/M2/M3:** configure private access/budget, authorize one synthetic request, inspect actual evidence and confirm stock into Prep Planner. Done: live response and the review-to-plan scenario verified. A Team ID alone is not an API credential.
 2. **You · V1:** rehearse `docs/DEMO_WALKTHROUGH.md`. Done: explain both resource scenarios and disclose synthetic data and remaining live verification.
 3. **Both · I3/I6:** identify the actual teammate UI branch, preserve its work and connect the documented import/analytics interfaces. Done: upload preview/confirm and explicitly selected imported charts reconcile.
 4. **Both · release:** resolve `docs/PUBLIC_RELEASE_REVIEW.md`, agree license and separately authorize visibility change; record and submit only after verification. Repository remains private.
+
+- [x] **U1 · Completed · Both — Improve demo presentation.** Location: `app.py`, `presentation.py`, `planner_ui.py`, `.streamlit/config.toml`. Evidence: ordinary Chrome review of Explore and both prep scenarios; 97 regression tests passed. Next: V1 rehearsal; mobile review remains untested.
 
 ## How statuses work
 
@@ -26,10 +30,10 @@ This update includes forecasting, the synthetic fixed-recipe planner and offline
 
 - [ ] **S4 · Almost done · Both — Keep the local app independent of chat tasks.** Location: `Start App.command`, `run.sh`. Next: user double-clicks `Start App.command` and keeps its Terminal open, then verify health after this chat task ends. Done: Terminal-owned process and Explore remain healthy. Evidence: shell syntax, localhost health, duplicate prevention and nine tests passed in temporary tool execution. Blocker: Terminal UI access denied by Computer Use; durable lifetime is unverified. Start/stop/sleep behavior documented. Local fix only; not yet uploaded.
 
-- [x] **G1 · Completed · Both — Share the starter privately.** Location: this GitHub repository. Done/evidence: private `Noorie-Noobie/restaurant-prep-lab`, starter on `main`, exact initial commit in Git history. Next: S2; no teammate invited yet.
+- [x] **G1 · Completed · Both — Share the starter privately.** Location: this GitHub repository. Done/evidence: private `Noorie-Noobie/restaurant-prep-lab`, starter on `main`, exact initial commit in Git history. Next: S2; existing collaborator `srivastavaaishwarya-analyst` (public profile: Aishwarya Srivastava) has read/write access, verified during UI upload.
 - [x] **S0 · Completed · Both — Prepare the local starter.** Location: `run.sh`, `.venv`, `requirements.lock.txt`. Done/evidence: launcher started on localhost and health returned `ok`; stopped after verification. Next: S1/S2 on each person's laptop.
 - [ ] **S1 · Haven't started · You — Walk through Explore yourself.** Location: `sh run.sh` → http://127.0.0.1:8501. Depends: S0. Next: filter to one month and compare orders, pizzas and sales. Done: record a bestseller and peak weekday/hour, with date range; explain that revenue is not profit.
-- [ ] **S2 · Haven't started · Teammate — Get access and reproduce setup.** Location: GitHub + `CONTRIBUTING.md`. Blocker: exact username and authorized invitation. Next: provide username, then accept/clone/install/download/build/test/run. Done: independent app launch and nine starter tests pass (or current expected count).
+- [ ] **S2 · Haven't started · Teammate — Get access and reproduce setup.** Location: GitHub + `CONTRIBUTING.md`. Access verified: `srivastavaaishwarya-analyst` already has read/write permission. Next: clone or pull, install/download/build/test/run. Done: independent app launch and current 97 tests pass.
 - [ ] **S3 · Haven't started · Both — Agree one shared input/output contract.** Location: add a compact schema section to README. Depends: S1/S2/I4. Next: write one example containing SKU, ingredient quantity/unit, on-hand stock, minutes and confirmation metadata. Done: both can explain and use the same fields without guessing units.
 
 ## 2 · Data and demand · You

@@ -95,3 +95,19 @@ Remaining live blocker: privately configured Meta API key, account/model/credit 
 User authorized uploading the remaining restaurant project work. Reviewed all forecast/planner/Meta code, tests and guides; remote main was dccbca22 with no other branches or open PRs, destination Noorie-Noobie/restaurant-prep-lab verified private. Updated README/task statuses to distinguish the connected synthetic planner from pending imported-data UI, actual Meta verification and public release. No teammate-specific UI was present to integrate. Removed user-specific README launch paths and excluded the separate existing run.sh/Start App.command repair; those remain local.
 
 Pre-upload regression: **97 passed in 6.63 seconds**, 11 occurrences of the existing Streamlit/pandas deprecation warning. `pip check`: no broken requirements. `git diff --check` passed. Meta tests use mocked requests only; no live API call, secret configuration, publication, deployment or submission. Credentials, raw CSV, generated databases and private evidence remain ignored. See the upload commit in Git history for the exact included files.
+
+## November 4 presentation refresh — local only
+
+Reworked Explore and Prep Planner presentation with shared navy/teal/amber styling, ranked horizontal dish bars with readable display names and counts, labeled rush-hour totals, forecast history with a mean reference line, compact stock inputs and available-versus-required ingredient bars. Detailed assumptions/calculation tables remain expandable; fictional/synthetic source boundaries stay visible. Calculations, databases and Meta consent/request gates are unchanged. Existing launcher edits preserved; no push or publication.
+
+Full regression after changes: 97 tests passed. Actual in-app browser review at 1280 × 720 verified Explore chart layout and both planner scenarios (20 feasible/9 unmet/40 minutes; 29 feasible/0 unmet/58 minutes after 3,500 g cheese). Corrected ingredient axis label suppression found during visual QA. Meta showed configured key/live flags false and disabled extraction; no API request made. Mobile/narrow-width visual review and live Meta remain untested. Temporary localhost app server is task-hosted, not a persistent service; use own launch Terminal for recording.
+
+## Second presentation refinement — local only
+
+Replaced the initial navy theme with cream, forest green, gold and burnt orange; added serif display headings, a narrower branded sidebar, numbered chart sections and quiet ruled metrics. Added project-local `.streamlit/config.toml`. Corrected the sales metric width and chart-label spacing during ordinary Google Chrome review. No global browser appearance changes.
+
+Final regression: **97 passed in 4.89 seconds**. Ordinary Chrome verified the complete Explore sales value ($817,860.05), readable menu rankings and rush heatmap, then both planner outcomes: 20 feasible / 9 unmet / 40 minutes with the 900 g cheese shortage, and 29 feasible / 0 unmet / 58 minutes after setting cheese to 3,500 g. Synthetic labels remain visible. No live Meta request, mobile visual validation, push or publication. Existing local launcher changes preserved.
+
+## Authorized UI upload
+
+User authorized sharing the completed UI improvements in the existing private repository. Remote main matched local HEAD before staging. Pre-upload regression: **97 passed in 5.36 seconds**; staged whitespace and common credential-pattern checks passed. Included presentation code, project theme and updated checklist/validation. Excluded the separate `run.sh` and `Start App.command` launcher changes, raw data, databases, credentials and private evidence. Live Meta and mobile visual review remain unverified. No deployment, visibility change or permission grant.
