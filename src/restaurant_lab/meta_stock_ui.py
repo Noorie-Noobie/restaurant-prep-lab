@@ -8,7 +8,7 @@ def render_meta_stock():
     st.code(NOTE,language=None)
     state=readiness()
     st.caption(f"Meta Model API · muse-spark-1.3 Standard · key configured: {state['key_present']} · live enabled: {state['live_enabled']}")
-    st.write('One request sends only the note above and extraction schema to api.meta.ai. It may consume credits. Official Standard rates: $1.25 / million input tokens and $4.25 / million output tokens; output capped at 1,024 tokens. No automatic retries.')
+    st.write('One request sends only the note above and extraction schema to api.meta.ai. It may consume credits. Official Standard rates: $1.25 / million input tokens and $4.25 / million output tokens; output capped at 4,096 tokens. No automatic retries.')
     consent=st.checkbox('I authorize one request for this synthetic note and its API usage',key='meta_stock_consent')
     disabled=not(consent and all(state.values())) or st.session_state.get('meta_stock_attempted',False)
     if st.button('Extract synthetic counted stock with Meta',disabled=disabled):

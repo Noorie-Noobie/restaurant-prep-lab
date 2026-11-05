@@ -54,7 +54,7 @@ def test_request_and_confirmation_to_plan(monkeypatch):
     assert len(calls)==1
     url,kw=calls[0];assert url==ms.ENDPOINT and kw['allow_redirects'] is False
     assert kw['json']['messages'][1]['content']==ms.NOTE
-    assert kw['json']['store'] is False and kw['json']['max_completion_tokens']==1024
+    assert kw['json']['store'] is False and kw['json']['max_completion_tokens']==4096
     assert kw['json']['model']=='muse-spark-1.3'
     grams=ms.candidate_grams(record['candidate'])
     with pytest.raises(ValueError):ms.confirm_stock(record,grams)
